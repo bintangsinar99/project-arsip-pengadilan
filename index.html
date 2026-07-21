@@ -194,12 +194,30 @@
       .login-header {
         margin-bottom: 26px;
       }
+
+      .login-character {
+        width: 120px;
+        bottom: 0;
+        right: 10px;
+      }
+    }
+
+    .login-character {
+      position: fixed;
+      bottom: 0;
+      right: 30px;
+      width: 180px;
+      z-index: 2;
+      filter: drop-shadow(0 4px 20px rgba(0, 0, 0, .4));
+      pointer-events: none;
     }
   </style>
 </head>
 
 <body class="login-page">
   <div class="bg-animated"></div>
+
+  <img class="login-character" src="asset/bu-diana.png" alt="DIAN Character">
 
   <div class="login-wrapper">
     <div class="login-card">

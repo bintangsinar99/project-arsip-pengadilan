@@ -33,14 +33,9 @@
         <i class="fa-solid fa-gauge"></i>
         <span>Dashboard</span>
       </a>
-      <a class="nav-item" onclick="showSection('arsip')">
-        <i class="fa-solid fa-folder-open"></i>
-        <span>Arsip Digital</span>
-        <span class="nav-badge">10</span>
-      </a>
-      <a class="nav-item" onclick="showSection('profil')">
-        <i class="fa-solid fa-circle-user"></i>
-        <span>Profil Saya</span>
+      <a class="nav-item" onclick="window.location.href='settings.html'">
+        <i class="fa-solid fa-gear"></i>
+        <span>Pengaturan</span>
       </a>
     </nav>
 
@@ -70,7 +65,55 @@
       </div>
       <div class="topbar-right">
         <div class="topbar-date" id="topbarDate"></div>
-        <div class="topbar-avatar" id="topbarAvatar">U</div>
+        <div class="topbar-avatar-wrap">
+          <div class="topbar-avatar" id="topbarAvatar" onclick="toggleProfileDropdown()" style="cursor:pointer">U</div>
+          <div class="profile-dropdown" id="profileDropdown">
+            <div class="profile-dropdown-header">
+              <div class="profile-dropdown-avatar" id="ddAvatar">U</div>
+              <div>
+                <p class="profile-dropdown-name" id="ddName">User</p>
+                <span class="profile-dropdown-role" id="ddRole">Staff</span>
+              </div>
+            </div>
+            <div class="profile-dropdown-divider"></div>
+            <div class="profile-dropdown-body">
+              <div class="profile-dropdown-row">
+                <i class="fa-solid fa-fingerprint"></i>
+                <div>
+                  <label>NIP</label>
+                  <p id="ddNip">-</p>
+                </div>
+              </div>
+              <div class="profile-dropdown-row">
+                <i class="fa-solid fa-briefcase"></i>
+                <div>
+                  <label>Jabatan</label>
+                  <p id="ddJabatan">-</p>
+                </div>
+              </div>
+              <div class="profile-dropdown-row">
+                <i class="fa-solid fa-building"></i>
+                <div>
+                  <label>Divisi</label>
+                  <p id="ddDivisi">-</p>
+                </div>
+              </div>
+              <div class="profile-dropdown-row">
+                <i class="fa-solid fa-clock"></i>
+                <div>
+                  <label>Waktu Login</label>
+                  <p id="ddLoginTime">-</p>
+                </div>
+              </div>
+            </div>
+            <div class="profile-dropdown-divider"></div>
+            <div class="profile-dropdown-footer">
+              <a href="settings.html" class="profile-dropdown-link">
+                <i class="fa-solid fa-gear"></i> Pengaturan Akun
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -90,231 +133,58 @@
           </div>
         </div>
 
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fa-solid fa-folder"></i></div>
-            <div class="stat-info">
-              <p>Total Arsip Tersedia</p>
-              <h3>10</h3>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fa-solid fa-folder-open"></i></div>
-            <div class="stat-info">
-              <p>Arsip Diakses</p>
-              <h3>5</h3>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
-            <div class="stat-info">
-              <p>Akses Terakhir</p>
-              <h3 style="font-size:16px;margin-top:2px">Hari ini</h3>
-            </div>
-          </div>
-        </div>
-
-        <div class="content-grid">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">
-                <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Akses
-              </div>
-            </div>
-            <div class="activity-list">
-              <div class="activity-item">
-                <div class="activity-dot" style="background:#27ae60"></div>
-                <div class="activity-info">
-                  <p>Membuka Arsip Perdata</p>
-                  <span>Hari ini, 09:30</span>
-                </div>
-              </div>
-              <div class="activity-item">
-                <div class="activity-dot" style="background:#3498db"></div>
-                <div class="activity-info">
-                  <p>Membuka Arsip Pidana</p>
-                  <span>Hari ini, 08:45</span>
-                </div>
-              </div>
-              <div class="activity-item">
-                <div class="activity-dot" style="background:#e67e22"></div>
-                <div class="activity-info">
-                  <p>Membuka Arsip Hukum</p>
-                  <span>Kemarin, 14:20</span>
-                </div>
-              </div>
-              <div class="activity-item">
-                <div class="activity-dot" style="background:#9b59b6"></div>
-                <div class="activity-info">
-                  <p>Membuka Arsip PPID</p>
-                  <span>Kemarin, 10:00</span>
-                </div>
-              </div>
-              <div class="activity-item">
-                <div class="activity-dot" style="background:#1abc9c"></div>
-                <div class="activity-info">
-                  <p>Membuka Arsip PTIP</p>
-                  <span>2 hari lalu, 11:30</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">
-                <i class="fa-solid fa-bolt"></i> Akses Cepat
-              </div>
-            </div>
-            <div class="quick-grid">
-              <a class="quick-item" href="https://drive.google.com/drive/folders/1wG-TZO70XXpUHW_Du7J3ogi4T1H_ednO?usp=drive_link" target="_blank">
-                <i class="fa-solid fa-landmark" style="color:#27ae60"></i>
-                <span>Perdata</span>
-              </a>
-              <a class="quick-item" href="https://drive.google.com/drive/folders/147KciTSDblVZkbfnJmOBCnc7JChMH2Na?usp=drive_link" target="_blank">
-                <i class="fa-solid fa-gavel" style="color:#3498db"></i>
-                <span>Pidana</span>
-              </a>
-              <a class="quick-item" href="https://drive.google.com/drive/folders/1K1yi6n3nUB3KI6FQUZ-PJmJtMWUb4Qvx?usp=drive_link" target="_blank">
-                <i class="fa-solid fa-scale-balanced" style="color:#e67e22"></i>
-                <span>Hukum</span>
-              </a>
-              <a class="quick-item" onclick="showSection('arsip')">
-                <i class="fa-solid fa-folder-open" style="color:#9b59b6"></i>
-                <span>Lihat Semua</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Info box -->
-        <div class="card" style="border-left: 4px solid royalblue; margin-top:4px">
-          <div style="display:flex;align-items:center;gap:14px">
-            <i class="fa-solid fa-circle-info" style="color:royalblue;font-size:22px"></i>
-            <div>
-              <p style="font-size:14px;font-weight:600;color:#333">Informasi</p>
-              <p style="font-size:13px;color:#888;margin-top:2px">Semua arsip tersimpan di Google Drive PN Kediri. Klik menu <strong>Arsip Digital</strong> untuk mengakses seluruh folder arsip yang tersedia.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- ===== SECTION: ARSIP ===== -->
-      <div class="section" id="sec-arsip">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Arsip Digital</div>
-            <div class="section-subtitle">Klik folder untuk membuka arsip di Google Drive</div>
-          </div>
-        </div>
-
-        <div class="arsip-grid">
-          <a href="https://drive.google.com/drive/folders/1wG-TZO70XXpUHW_Du7J3ogi4T1H_ednO?usp=drive_link" target="_blank" class="arsip-card" style="background:linear-gradient(135deg,#27ae60,#1e8449);box-shadow:0 4px 15px rgba(39,174,96,0.3)">
-            <i class="fa-solid fa-landmark"></i><span>Perdata</span>
+        <div class="menu-grid">
+          <a href="https://drive.google.com/drive/folders/1wG-TZO70XXpUHW_Du7J3ogi4T1H_ednO?usp=drive_link" target="_blank" class="menu-card green">
+            <i class="fa-solid fa-landmark"></i>
+            <span>Perdata</span>
           </a>
-          <a href="https://drive.google.com/drive/folders/147KciTSDblVZkbfnJmOBCnc7JChMH2Na?usp=drive_link" target="_blank" class="arsip-card" style="background:linear-gradient(135deg,#3498db,#2e86c1);box-shadow:0 4px 15px rgba(52,152,219,0.3)">
-            <i class="fa-solid fa-gavel"></i><span>Pidana</span>
+          <a href="https://drive.google.com/drive/folders/147KciTSDblVZkbfnJmOBCnc7JChMH2Na?usp=drive_link" target="_blank" class="menu-card blue">
+            <i class="fa-solid fa-gavel"></i>
+            <span>Pidana</span>
           </a>
-          <a href="https://drive.google.com/drive/folders/1K1yi6n3nUB3KI6FQUZ-PJmJtMWUb4Qvx?usp=drive_link" target="_blank" class="arsip-card" style="background:linear-gradient(135deg,#e67e22,#ca6f1e);box-shadow:0 4px 15px rgba(230,126,34,0.3)">
-            <i class="fa-solid fa-scale-balanced"></i><span>Hukum</span>
+          <a href="https://drive.google.com/drive/folders/1K1yi6n3nUB3KI6FQUZ-PJmJtMWUb4Qvx?usp=drive_link" target="_blank" class="menu-card orange">
+            <i class="fa-solid fa-scale-balanced"></i>
+            <span>Hukum</span>
           </a>
-          <a href="https://drive.google.com/drive/folders/1Ghik4QdbMpvwhqDo4IkWPsdTJjdbYvn2?usp=drive_link" target="_blank" class="arsip-card" style="background:linear-gradient(135deg,#e74c3c,#cb4335);box-shadow:0 4px 15px rgba(231,76,60,0.3)">
-            <i class="fa-solid fa-users"></i><span>Kepegawaian & Ortala</span>
+          <a href="https://drive.google.com/drive/folders/1Ghik4QdbMpvwhqDo4IkWPsdTJjdbYvn2?usp=drive_link" target="_blank" class="menu-card red">
+            <i class="fa-solid fa-users"></i>
+            <span>Kepegawaian & Ortala</span>
           </a>
-          <a href="https://drive.google.com/drive/folders/1h4166mPrifciyLP166vdS-PDtwy4FBPW?usp=drive_link" target="_blank" class="arsip-card" style="background:linear-gradient(135deg,#9b59b6,#884ea0);box-shadow:0 4px 15px rgba(155,89,182,0.3)">
-            <i class="fa-solid fa-coins"></i><span>Umum & Keuangan</span>
+          <a href="https://drive.google.com/drive/folders/1h4166mPrifciyLP166vdS-PDtwy4FBPW?usp=drive_link" target="_blank" class="menu-card purple">
+            <i class="fa-solid fa-coins"></i>
+            <span>Umum & Keuangan</span>
           </a>
-          <a href="https://drive.google.com/drive/folders/12R_cD18VGUrvUJSSvj5cn7x49-fp97SR?usp=drive_link" target="_blank" class="arsip-card" style="background:linear-gradient(135deg,#1abc9c,#17a589);box-shadow:0 4px 15px rgba(26,188,156,0.3)">
-            <i class="fa-solid fa-laptop-code"></i><span>PTIP</span>
+          <a href="https://drive.google.com/drive/folders/12R_cD18VGUrvUJSSvj5cn7x49-fp97SR?usp=drive_link" target="_blank" class="menu-card teal">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span>PTIP</span>
           </a>
-          <a href="https://drive.google.com/drive/folders/1JhrvVI8O91cav3MhfL2PIHcjk5cf0EcC?usp=drive_link" target="_blank" class="arsip-card" style="background:linear-gradient(135deg,#f39c12,#d68910);box-shadow:0 4px 15px rgba(243,156,18,0.3)">
-            <i class="fa-solid fa-couch"></i><span>PTSP</span>
+          <a href="https://drive.google.com/drive/folders/1JhrvVI8O91cav3MhfL2PIHcjk5cf0EcC?usp=drive_link" target="_blank" class="menu-card amber">
+            <i class="fa-solid fa-couch"></i>
+            <span>PTSP</span>
           </a>
-          <a href="https://drive.google.com/drive/folders/1uzTt-iha2hv6oV5h21nyI820WjlnHFSl?usp=drive_link" target="_blank" class="arsip-card" style="background:linear-gradient(135deg,#2980b9,#2471a3);box-shadow:0 4px 15px rgba(41,128,185,0.3)">
-            <i class="fa-solid fa-file-contract"></i><span>PPID</span>
+          <a href="https://drive.google.com/drive/folders/1uzTt-iha2hv6oV5h21nyI820WjlnHFSl?usp=drive_link" target="_blank" class="menu-card darkblue">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>PPID</span>
           </a>
-          <a href="https://drive.google.com/drive/folders/1fTKN26shMItmOt6ieDkygWgswpgjbQh1?usp=drive_link" target="_blank" class="arsip-card" style="background:linear-gradient(135deg,#f1c40f,#d4ac0d);box-shadow:0 4px 15px rgba(241,196,15,0.3)">
-            <i class="fa-solid fa-medal"></i><span>Ampuh</span>
+          <a href="https://drive.google.com/drive/folders/1fTKN26shMItmOt6ieDkygWgswpgjbQh1?usp=drive_link" target="_blank" class="menu-card yellow">
+            <i class="fa-solid fa-medal"></i>
+            <span>Ampuh</span>
           </a>
-          <a href="https://drive.google.com/drive/folders/1vF1jJFn72axVs07Ko03TEGo07ycXR7B6?usp=drive_link" target="_blank" class="arsip-card" style="background:linear-gradient(135deg,#7f8c8d,#707b7c);box-shadow:0 4px 15px rgba(127,140,141,0.3)">
-            <i class="fa-solid fa-award"></i><span>Zona Integritas</span>
+          <a href="https://drive.google.com/drive/folders/1vF1jJFn72axVs07Ko03TEGo07ycXR7B6?usp=drive_link" target="_blank" class="menu-card gray" style="grid-column:2">
+            <i class="fa-solid fa-award"></i>
+            <span>Zona Integritas</span>
+          </a>
+          <a class="menu-card dark full-width upload-card">
+            <i class="fa-solid fa-landmark"></i>
+            <span>Upload</span>
           </a>
         </div>
-      </div>
 
-      <!-- ===== SECTION: PROFIL ===== -->
-      <div class="section" id="sec-profil">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Profil Saya</div>
-            <div class="section-subtitle">Informasi akun pengguna</div>
-          </div>
-        </div>
-
-        <div class="profile-card">
-          <div class="profile-header">
-            <div class="profile-avatar" id="profileAvatar">U</div>
-            <div class="profile-name">
-              <h2 id="profileName">User</h2>
-              <span id="profileRole">Staff</span>
-            </div>
-          </div>
-          <div class="profile-body">
-            <div class="profile-row">
-              <i class="fa-solid fa-user"></i>
-              <div class="profile-row-content">
-                <label>Nama Lengkap</label>
-                <p id="profileFullName">-</p>
-              </div>
-            </div>
-            <div class="profile-row">
-              <i class="fa-solid fa-id-card"></i>
-              <div class="profile-row-content">
-                <label>Username</label>
-                <p id="profileUsername">-</p>
-              </div>
-            </div>
-            <div class="profile-row">
-              <i class="fa-solid fa-fingerprint"></i>
-              <div class="profile-row-content">
-                <label>NIP</label>
-                <p id="profileNip">-</p>
-              </div>
-            </div>
-            <div class="profile-row">
-              <i class="fa-solid fa-briefcase"></i>
-              <div class="profile-row-content">
-                <label>Jabatan</label>
-                <p id="profileJabatan">-</p>
-              </div>
-            </div>
-            <div class="profile-row">
-              <i class="fa-solid fa-building"></i>
-              <div class="profile-row-content">
-                <label>Divisi</label>
-                <p id="profileDivisi">-</p>
-              </div>
-            </div>
-            <div class="profile-row">
-              <i class="fa-solid fa-user-tag"></i>
-              <div class="profile-row-content">
-                <label>Role</label>
-                <p><span class="badge user">User</span></p>
-              </div>
-            </div>
-            <div class="profile-row">
-              <i class="fa-solid fa-clock"></i>
-              <div class="profile-row-content">
-                <label>Waktu Login</label>
-                <p id="profileLoginTime">-</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
     </div><!-- end page-content -->
+  </main>
+
   </main>
 
   <script src="js/auth.js"></script>
@@ -327,14 +197,14 @@
       document.getElementById('topbarAvatar').textContent = session.avatar;
       document.getElementById('welcomeText').textContent = 'Halo, ' + session.name + ' 👋';
       document.getElementById('loginTimeText').textContent = 'Login pada ' + formatLoginTime(session.loginTime);
-      document.getElementById('profileAvatar').textContent = session.avatar;
-      document.getElementById('profileName').textContent = session.name;
-      document.getElementById('profileFullName').textContent = session.name;
-      document.getElementById('profileUsername').textContent = session.username;
-      document.getElementById('profileNip').textContent = session.nip;
-      document.getElementById('profileJabatan').textContent = session.jabatan;
-      document.getElementById('profileDivisi').textContent = session.divisi || '-';
-      document.getElementById('profileLoginTime').textContent = formatLoginTime(session.loginTime);
+      // Dropdown data
+      document.getElementById('ddAvatar').textContent = session.avatar;
+      document.getElementById('ddName').textContent = session.name;
+      document.getElementById('ddRole').textContent = session.jabatan || 'Staff';
+      document.getElementById('ddNip').textContent = session.nip || '-';
+      document.getElementById('ddJabatan').textContent = session.jabatan || '-';
+      document.getElementById('ddDivisi').textContent = session.divisi || '-';
+      document.getElementById('ddLoginTime').textContent = formatLoginTime(session.loginTime);
     }
 
     // Update tanggal topbar
@@ -366,11 +236,8 @@
 
       document.getElementById('sec-' + name).classList.add('active');
 
-      const navItems = document.querySelectorAll('.nav-item');
-      const titles = {
+      const navItems = document.querySelectorAll('.nav-item');      const titles = {
         dashboard: ['Dashboard', 'Selamat datang di sistem arsip digital DIAN'],
-        arsip: ['Arsip Digital', 'Klik folder untuk membuka arsip di Google Drive'],
-        profil: ['Profil Saya', 'Informasi akun pengguna'],
       };
 
       if (titles[name]) {
@@ -378,11 +245,23 @@
         document.getElementById('pageSubtitle').textContent = titles[name][1];
       }
 
-      const idx = { dashboard: 0, arsip: 1, profil: 2 };
+      const idx = { dashboard: 0 };
       if (idx[name] !== undefined) {
         navItems[idx[name]].classList.add('active');
       }
     }
+
+    // Profile dropdown
+    function toggleProfileDropdown() {
+      document.getElementById('profileDropdown').classList.toggle('active');
+    }
+
+    document.addEventListener('click', function(e) {
+      const wrap = document.querySelector('.topbar-avatar-wrap');
+      if (wrap && !wrap.contains(e.target)) {
+        document.getElementById('profileDropdown').classList.remove('active');
+      }
+    });
   </script>
 </body>
 </html>
