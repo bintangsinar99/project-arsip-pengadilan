@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - DIAN PN Kediri</title>
+  <link rel="icon" href="asset/icon-dian.png" type="image/png">
+  <link rel="stylesheet" href="style/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --dian-blue: royalblue;
+      --dian-blue-dark: #2251cc;
+      --dian-ink: #f8fafc;
+    }
+
+    body.login-page {
+      min-height: 100vh;
+      min-height: 100dvh;
+      margin: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      font-family: Arial, sans-serif;
+      background: #0b1627;
+    }
+
+    .bg-animated {
+      position: fixed;
+      inset: 0;
+      width: auto;
+      height: auto;
+      background:
+        linear-gradient(120deg, rgba(5, 15, 31, .68) 0%, rgba(10, 25, 48, .52) 50%, rgba(5, 14, 29, .64) 100%),
+        url("asset/header-bg.png") center / cover no-repeat;
+    }
+
+    .bg-animated::before,
+    .bg-animated::after {
+      content: none;
+      animation: none;
+    }
+
+    .login-wrapper {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      max-width: none;
+      padding: 32px 20px;
+    }
+
+    .login-card {
+      width: min(100%, 440px);
+      padding: 40px;
+      background: linear-gradient(145deg, rgba(20, 37, 61, .84), rgba(9, 20, 37, .80));
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 20px;
+      box-shadow: 0 24px 64px rgba(1, 9, 22, .52), inset 0 1px 0 rgba(255, 255, 255, .08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: var(--dian-ink);
+    }
+
+    .login-header {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .login-logo {
+      width: 156px;
+      margin-bottom: 14px;
+      filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .28));
+    }
+
+    .login-title {
+      margin: 0 0 6px;
+      color: #fff;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      line-height: 1.1;
+    }
+
+    .login-subtitle {
+      margin: 0;
+      color: rgba(235, 242, 255, .76);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .login-divider {
+      width: 42px;
+      height: 3px;
+      margin: 18px auto 0;
+      background: #7ca1ff;
+    }
+
+    .login-form {
+      gap: 18px;
+    }
+
+    .form-group {
+      gap: 7px;
+    }
+
+    .form-group label {
+      color: rgba(245, 248, 255, .88);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .01em;
+      text-transform: none;
+    }
+
+    .input-wrapper i {
+      z-index: 1;
+      left: 15px;
+      color: rgba(224, 233, 247, .62);
+    }
+
+    .input-wrapper input {
+      min-height: 50px;
+      padding: 12px 46px 12px 43px;
+      background: rgba(4, 14, 29, .38);
+      border: 1px solid rgba(221, 232, 250, .20);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 15px;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .12);
+    }
+
+    .input-wrapper input::placeholder {
+      color: rgba(224, 233, 247, .52);
+    }
+
+    .input-wrapper input:focus {
+      background: rgba(4, 14, 29, .52);
+      border-color: #7ca1ff;
+      box-shadow: 0 0 0 3px rgba(124, 161, 255, .18);
+    }
+
+    .input-wrapper:focus-within i,
+    .toggle-password:hover {
+      color: #9bb8ff;
+    }
+
+    .toggle-password {
+      z-index: 2;
+      right: 14px;
+      color: rgba(224, 233, 247, .65);
+    }
+
+    .error-message {
+      margin: 0;
+      padding: 11px 13px;
+      background: rgba(155, 35, 36, .24);
+      border-color: rgba(255, 177, 177, .32);
+      border-radius: 9px;
+      color: #ffd1cd;
+      font-size: 13px;
+    }
+
+    .btn-login {
+      min-height: 50px;
+      margin-top: 6px;
+      padding: 12px 18px;
+      background: linear-gradient(135deg, var(--dian-blue), var(--dian-blue-dark));
+      border: 1px solid rgba(158, 187, 255, .38);
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(4, 16, 41, .30);
+      font-size: 15px;
+      letter-spacing: .01em;
+    }
+
+    .btn-login:hover {
+      box-shadow: 0 10px 24px rgba(4, 16, 41, .45);
+    }
+
+    @media (max-width: 575.98px) {
+      .login-wrapper {
+        align-items: center;
+        padding: 24px 16px;
+      }
+
+      .login-card {
+        padding: 32px 24px;
+        border-radius: 16px;
+      }
+
+      .login-header {
+        margin-bottom: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body class="login-page">
+  <div class="bg-animated"></div>
+
+  <div class="login-wrapper">
+    <div class="login-card">
+
+      <div class="login-header">
+        <img class="login-logo" src="asset/logo-dian2.png" alt="Logo DIAN">
+        <h1 class="login-title">DIAN</h1>
+        <p class="login-subtitle">Digital Informasi Arsip<br>Pengadilan Negeri Kediri</p>
+        <div class="login-divider"></div>
+      </div>
+
+      <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-user"></i>
+            <input
+              type="text"
+              id="username"
+              placeholder="Masukkan username"
+              autocomplete="username"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock"></i>
+            <input
+              type="password"
+              id="password"
+              placeholder="Masukkan password"
+              autocomplete="current-password"
+              required
+            >
+            <button type="button" class="toggle-password" onclick="togglePassword()" id="toggleBtn">
+              <i class="fa-solid fa-eye" id="eyeIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="error-message" id="errorMsg">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span>Username atau password salah. Silakan coba lagi.</span>
+        </div>
+
+        <button type="submit" class="btn-login" id="btnLogin">
+          <i class="fa-solid fa-right-to-bracket"></i>&nbsp; Masuk
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    // Redirect jika sudah login
+    redirectIfLoggedIn();
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('errorMsg');
+      const btnLogin = document.getElementById('btnLogin');
+
+      btnLogin.classList.add('loading');
+      btnLogin.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>&nbsp; Memproses...';
+      errorMsg.classList.remove('show');
+
+      setTimeout(() => {
+        const result = login(username, password);
+        if (result.success) {
+          btnLogin.innerHTML = '<i class="fa-solid fa-check"></i>&nbsp; Berhasil!';
+          btnLogin.style.background = 'linear-gradient(135deg, #27ae60, #1e8449)';
+          setTimeout(() => {
+            if (result.role === 'admin') {
+              window.location.href = 'dashboard-admin.html';
+            } else {
+              window.location.href = 'dashboard-user.html';
+            }
+          }, 600);
+        } else {
+          btnLogin.classList.remove('loading');
+          btnLogin.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i>&nbsp; Masuk';
+          errorMsg.classList.add('show');
+        }
+      }, 800);
+    }
+
+    function togglePassword() {
+      const input = document.getElementById('password');
+      const icon = document.getElementById('eyeIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fa-solid fa-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'fa-solid fa-eye';
+      }
+    }
+  </script>
+</body>
+
+</html>

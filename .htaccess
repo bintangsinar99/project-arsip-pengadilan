@@ -1,0 +1,19 @@
+# Use index.html as the default page
+DirectoryIndex index.html
+
+# Redirect all requests to index.html (useful for single-page apps)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # If the requested file or directory does not exist
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Redirect everything to index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Optional: Force HTTPS (uncomment to enable)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
